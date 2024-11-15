@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Infinite Redirect with location.replace</title>
+    <script type="text/javascript">
+        // 리다이렉트할 두 개의 사이트 목록
+        const sites = ["https://example1.com", "https://example2.com"];
+        let currentIndex = 0;
+
+        // 0초마다 다른 사이트로 무한 리다이렉트하는 함수
+        function infiniteRedirect() {
+            // 현재 인덱스의 사이트로 이동
+            window.location.replace(sites[currentIndex]);
+            // 다음 사이트를 가리키도록 인덱스를 업데이트
+            currentIndex = (currentIndex + 1) % sites.length;
+        }
+
+        // 페이지가 로드되면 리다이렉트를 즉시 시작
+        window.onload = function() {
+            setInterval(infiniteRedirect, 1); // 1밀리초 간격으로 실행
+        };
+    </script>
+</head>
+<body>
+    <p>1밀리초마다 두 사이트로 무한히 이동합니다. 테스트 환경에서 사용하세요.</p>
+</body>
+</html>
